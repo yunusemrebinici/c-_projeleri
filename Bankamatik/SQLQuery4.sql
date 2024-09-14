@@ -1,0 +1,10 @@
+create procedure haraketler
+as
+select GÖNDEREN.AD +' '+GÖNDEREN.SOYAD AS 'Gönderen',(ALICI.AD+ALICI.SOYAD)AS 'Alýcý' ,TUTAR as 'Tutar' from TBLHARAKET inner join
+TBLKISILER as [GÖNDEREN]
+on
+GÖNDEREN.HESAPNO=TBLHARAKET.GONDEREN 
+inner join 
+TBLKISILER as [ALICI]
+ON
+ALICI.HESAPNO=TBLHARAKET.ALICI

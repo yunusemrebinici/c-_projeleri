@@ -1,0 +1,19 @@
+CREATE PROCEDURE haraket3
+    @GonderenHesapNo INT = NULL,
+    @AliciHesapNo INT = NULL
+AS
+BEGIN
+    SELECT 
+        GÖNDEREN.AD + ' ' + GÖNDEREN.SOYAD AS 'Gönderen',
+        ALICI.AD + ' ' + ALICI.SOYAD AS 'Alýcý' ,
+		TUTAR
+    FROM 
+        TBLHARAKET
+    INNER JOIN 
+        TBLKISILER AS GÖNDEREN ON GÖNDEREN.HESAPNO = TBLHARAKET.GONDEREN
+    INNER JOIN 
+        TBLKISILER AS ALICI ON ALICI.HESAPNO = TBLHARAKET.ALICI
+    WHERE 
+        (@GonderenHesapNo IS NULL OR TBLHARAKET.GONDEREN = @GonderenHesapNo)
+        AND (@AliciHesapNo IS NULL OR TBLHARAKET.ALICI = @AliciHesapNo);
+END;
